@@ -10,16 +10,16 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
     if (!confirmed) {
       return (
           <div>
-            <CircularProgress />
-            <p>Loading API Data</p>
-          </div>
+          <CircularProgress />
+          <p>Loading API Data</p>
+          </div> 
       )
     }
     // Now we have data, so show it
     return (
         <div className="container">
             <Grid container spacing={3} justify="center">
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
+                <Grid item component={Card} xs={12} md={4} className={cx(styles.card, styles.infected)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
                             Confirmed
@@ -40,7 +40,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                         </Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
+                <Grid item component={Card} xs={12} md={4} className={cx(styles.card, styles.recovered)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
                             Recovered
@@ -61,7 +61,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                         </Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
+                <Grid item component={Card} xs={12} md={4} className={cx(styles.card, styles.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
                             Deaths
@@ -79,6 +79,42 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                         </Typography>
                         <Typography variant="body2">
                             Nr of deaths caused by COVID-19
+                        </Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item component={Card} xs={12} md={4} className={cx(styles.card, styles.diffid)}>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>
+                            Confirmed minus recovered
+                        </Typography>
+                        <Typography variant="h5" gutterBottom>
+                            <CountUp 
+                                start={0}
+                                end={confirmed.value - recovered.value }
+                                duation={2.5}
+                                separator=","
+                            />
+                        </Typography>
+                        <Typography variant="body2">
+                            Covid-19
+                        </Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item component={Card} xs={12} md={4} className={cx(styles.card, styles.diffdead)}>
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>
+                            Confirmed minus Deaths
+                        </Typography>
+                        <Typography variant="h5" gutterBottom>
+                            <CountUp 
+                                start={0}
+                                end={confirmed.value - deaths.value }
+                                duation={2.5}
+                                separator=","
+                            />
+                        </Typography>
+                        <Typography variant="body2">
+                            Covid-19
                         </Typography>
                     </CardContent>
                 </Grid>

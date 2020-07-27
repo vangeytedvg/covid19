@@ -25,5 +25,14 @@ body {
     border-top: 10px solid rgba(100,0,0,0.5);
 }
 
+.diffid {
+    border-bottom: 20px solid rgba(255,130,140,0.5);
+    border-top: 10px solid rgba(255,130,140,0.5);
+}
+
+.diffdead {
+    border-bottom: 20px solid rgba(25,130,140,0.5);
+    border-top: 10px solid rgba(25,130,140,0.5);
+}
 
 
