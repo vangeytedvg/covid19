@@ -5,8 +5,9 @@ body {
 .container{
     display: flex;
     justify-content: center;
-    width: 85%
+    width: 60%;
 }
+
 
 .card {
     margin: 0 2% !important;

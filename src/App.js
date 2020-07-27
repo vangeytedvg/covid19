@@ -27,6 +27,7 @@ class App extends React.Component {
     this.setState({data, country: country});
   }
 
+  // This method manages the selection of the type of chart to be drawn
   handleChartTypeChange = (chartType) => {
     this.setState({chartType})
   }
@@ -40,8 +41,9 @@ class App extends React.Component {
       <div className={styles.container}>
         <img className={styles.image} src={banner} alt='COVID-19'/>
         <Cards data={data} />
-        {/* Will call the above function handleCountryChange */}
+        {/* Passes the type of chart to be drawn */}
         <ChartSelector handleChartTypeChange={this.handleChartTypeChange} chartType={chartType}/> 
+        {/* Will call the above function handleCountryChange */}
         <CountryPicker handleCountryChange={this.handleCountryChange} />
         <Chart data={data} country={country} chartType={chartType}/> 
       </div>

@@ -1,6 +1,8 @@
 body {
-     background: #fff url('img/corona.jpeg') no-repeat center center ;
+     background: #fff; 
 }
+/* url('img/corona.jpeg') no-repeat center center ;
+*/
 
 .container{
     display: flex;;
@@ -11,6 +13,7 @@ body {
 
 .image {
     margin-top:0px;
+    margin-bottom: 20px;
   }
   
   @media only screen and (max-width: 770px) {
