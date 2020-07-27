@@ -4,6 +4,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import styles from './ChartSelector.module.css';
+
 
 /*
     What I had to do to make this work:
@@ -16,7 +18,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 const ChartSelector = ({ handleChartTypeChange, chartType }) => {
     console.log(handleChartTypeChange, chartType)
     return (
-        <FormControl className="mt-4" component="fieldset">
+        <FormControl component="fieldset">
+        <div className={styles.tek}>
             <FormLabel component="legend">Select type of chart for selected country</FormLabel>
             <RadioGroup row aria-label="position" name="position" defaultValue="top">
                 <FormControlLabel
@@ -36,7 +39,9 @@ const ChartSelector = ({ handleChartTypeChange, chartType }) => {
                     onChange={(e) => handleChartTypeChange(e.target.value)}
                 />
             </RadioGroup>
+            </div>
         </FormControl>
+
     )
 }
 
