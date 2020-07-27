@@ -25,8 +25,10 @@ export const fetchData = async () => {
 // Get the data for the chart 
 export const fetchDailyData = async () => {
     try {
-        const response = await axios.get(`${url}/daily`);
+      const { data } = await axios.get('https://covid19.mathdro.id/api/daily');
+
+      return data.map(({ confirmed, deaths, reportDate: date }) => ({ confirmed: confirmed.total, deaths: deaths.total, date }));
     } catch (error) {
-        console.log(error)
+        return error;
     }
-}
+  };
