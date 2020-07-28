@@ -1,9 +1,15 @@
+/***
+ * File   : App.js
+ * App    : corona2020
+ * Type   : ReactJS
+ * Author : Danny Van Geyte
+ */
 import React from 'react';
-
 import Cards from './components/Cards/Cards';
 import CountryPicker from './components/CountryPicker/CountryPicker';
 import Chart from './components/Chart/Chart'
 import ChartSelector from './components/ChartSelector';
+import VisitCountry from './components/VisitCountry';
 import { fetchData, fetchDailyData } from './api/';
 import styles from './App.module.css';
 import banner from './img/banner.jpg';
@@ -45,6 +51,7 @@ class App extends React.Component {
         <ChartSelector handleChartTypeChange={this.handleChartTypeChange} chartType={chartType}/> 
         {/* Will call the above function handleCountryChange */}
         <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <VisitCountry country={country}/>
         <Chart data={data} country={country} chartType={chartType}/>
         <div>By Danny Van Geyte</div>
       </div>

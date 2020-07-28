@@ -1,8 +1,16 @@
+/***
+ * File   : CountryPicker.jsx
+ * App    : corona2020
+ * Type   : ReactJS
+ * Author : Danny Van Geyte
+ */
 import React, {useState, useEffect} from 'react';
 import { NativeSelect, FormControl} from '@material-ui/core';
 import { fetchCountries } from '../../api';
 
 import styles from './CountryPicker.module.css'
+
+const countryUrl = "https://www.google.com/search?q=";
 
 // Passes handleCountyChange event handler
 const CountryPicker = ({ handleCountryChange }) => {
@@ -19,6 +27,7 @@ const CountryPicker = ({ handleCountryChange }) => {
     }, [setFetchedCountries]);
 
     return (
+        <>
         <FormControl className={styles.formControl}>
             {/* Calls handleCountryChange event handler */}
             <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
@@ -27,9 +36,11 @@ const CountryPicker = ({ handleCountryChange }) => {
                     the API would fail!      
                 */}
                 <option value="">Global</option>
-                {fetchedCountries.map((country, i) => <option key={i} value={country}>{country}</option>)}
-            </NativeSelect>
+                {fetchedCountries.map((country, i) => <option key={i} value={country}>{country}</option>)}                
+            </NativeSelect>            
         </FormControl>
+        
+        </>
     )
 }
 

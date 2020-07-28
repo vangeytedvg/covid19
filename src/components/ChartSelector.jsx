@@ -1,3 +1,9 @@
+/***
+ * File   : ChartSelector.jsx
+ * App    : corona2020
+ * Type   : ReactJS
+ * Author : Danny Van Geyte
+ */
 import React, { useState, useEffect } from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -13,8 +19,6 @@ import styles from './ChartSelector.module.css';
     2. Pass the handleChartTypeChange parameter to this component
     3. Use onChange event calling the passed function as a parameter
 */
-
-
 const ChartSelector = ({ handleChartTypeChange, chartType }) => {
     console.log(handleChartTypeChange, chartType)
     return (
