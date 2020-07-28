@@ -15,15 +15,13 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase'
 
-import styles from './VisitCountry.module.css'
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     paper: {
         padding: theme.spacing(2),
+        elevation: 3,
         margin: 'auto',
         maxWidth: 500,
     },
@@ -41,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const VisitCountry = ({ country }) => {
 
+    // Make the number look good
+    const formatNumber = ((num) => {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    })
+
     const classes = useStyles();
 
     const [appState, setAppState] = useState({
@@ -48,10 +51,10 @@ export const VisitCountry = ({ country }) => {
         capital: '',
         flag: '',
         population: 0,
+        populationFormatted: '',
     });
 
     const [myCountry, setMyCountry] = useState('');
-    const countryInfoUrl = 'https://restcountries.eu/rest/v2/name/#?fullText=true'
 
     // Need to use this method to refresh the url link.
     useEffect(() => {
@@ -65,20 +68,13 @@ export const VisitCountry = ({ country }) => {
                     // Destructuring the info we get back from the restcountries api
                     const allInfo = countryinfo.data[0];
                     const { name, capital, flag, borders, population } = allInfo
-
-                    // console.log(name, capital, flag, borders)
-                    // borders.forEach((item) => {
-                    //     console.log(item)
-                    // })
-
-
-                    setAppState({ loading: false, capital: capital, flag: flag, population: population });
+                    setAppState({ loading: false, capital: capital, flag: flag, population: population, populationFormatted: formatNumber(population) });
                 })
                 .catch((err) => {
                     console.log("ERROR Occured : ", err)
                 })
         };
-
+ 
         setAppState({ loading: false })
     }, [country])
 
@@ -111,7 +107,7 @@ export const VisitCountry = ({ country }) => {
                                         Population
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary">
-                                        {appState.population}
+                                        {appState.populationFormatted}
                                     </Typography>
 
                                 </Grid>

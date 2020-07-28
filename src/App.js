@@ -11,7 +11,7 @@ import CountryPicker from './components/CountryPicker/CountryPicker';
 import Chart from './components/Chart/Chart'
 import ChartSelector from './components/ChartSelector';
 import VisitCountry from './components/VisitCountry';
-import { fetchData, fetchCapitalByCountry } from './api/';
+import { fetchData } from './api/';
 import styles from './App.module.css';
 import banner from './img/banner.jpg';
 
@@ -46,7 +46,7 @@ class App extends React.Component {
   render() {
     // Need to desctructure both vars here because they are declared toghether 
     // in the state object
-    const { data, country, chartType, capital } = this.state;
+    const { data, country, chartType } = this.state;
     return (
       <div className={styles.container}>
         <img className={styles.image} src={banner} alt='COVID-19'/>

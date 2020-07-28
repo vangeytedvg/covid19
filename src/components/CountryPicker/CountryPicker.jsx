@@ -11,7 +11,7 @@ import { fetchCountries } from '../../api';
 
 import styles from './CountryPicker.module.css'
 
-const countryUrl = "https://www.google.com/search?q=";
+//const countryUrl = "https://www.google.com/search?q=";
 
 // Passes handleCountyChange event handler
 const CountryPicker = ({ handleCountryChange }) => {

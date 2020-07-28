@@ -14,7 +14,7 @@ import styles from './Chart.module.css';
 const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) => {
   // Set our tate
   const [dailyData, setDailyData] = useState({});
-  const [chart, setChart] = useState('');
+  //const [chart, setChart] = useState('');
 
   useEffect(() => {
     // Because useEffect is synchronous we need to create a new function
@@ -24,14 +24,14 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) =
         const initialDailyData = await fetchDailyData();
         setDailyData(initialDailyData);
       } catch(error) {
-        const initialDailyData = ({'Error': 'Not Connected?'})
+        console.log(error)
       }
       
       //setChart(chartType);/
     }
 
     fetchAPI();
-  }, [setChart, chartType]);
+  }, [chartType]);
 
   const barChart = (
       confirmed ? (
