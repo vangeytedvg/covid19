@@ -45,7 +45,8 @@ class App extends React.Component {
         <ChartSelector handleChartTypeChange={this.handleChartTypeChange} chartType={chartType}/> 
         {/* Will call the above function handleCountryChange */}
         <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <Chart data={data} country={country} chartType={chartType}/> 
+        <Chart data={data} country={country} chartType={chartType}/>
+        <div>By Danny Van Geyte</div>
       </div>
     );
   }
