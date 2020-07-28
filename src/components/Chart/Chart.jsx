@@ -1,22 +1,33 @@
+/***
+ * File   : ChartSelector.jsx
+ * App    : corona2020
+ * Type   : ReactJS
+ * Author : Danny Van Geyte
+ * LM     : 28/07/2020
+ */
 import React, { useState, useEffect } from 'react';
 import { fetchDailyData } from '../../api';
 import { Line, Bar, Pie } from 'react-chartjs-2';
+import { CircularProgress } from '@material-ui/core';
 import styles from './Chart.module.css';
 
 const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) => {
-  console.log('COUNTRY : ' + country)
   // Set our tate
   const [dailyData, setDailyData] = useState({});
   const [chart, setChart] = useState('');
-    console.log('KIND OF CHART ' + chartType)
 
   useEffect(() => {
     // Because useEffect is synchronous we need to create a new function
     // inside it with is asynced
     const fetchAPI = async () => {
-      const initialDailyData = await fetchDailyData();
-      setDailyData(initialDailyData);
-      setChart(chartType);
+      try {
+        const initialDailyData = await fetchDailyData();
+        setDailyData(initialDailyData);
+      } catch(error) {
+        const initialDailyData = ({'Error': 'Not Connected?'})
+      }
+      
+      //setChart(chartType);/
     }
 
     fetchAPI();
@@ -40,7 +51,9 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) =
             title: { display: true, text: `Current state in ${country}` },
           }}
         />
-      ) : null
+      ) : (<div className="container">
+            <CircularProgress />
+          </div>)
     );
 
   const pieChart = (
@@ -61,7 +74,9 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) =
             title: { display: true, text: `Current state in ${country}` },
           }}
         />
-      ) : null
+      ) : (<div className="container">
+            <CircularProgress />
+          </div>)
     );
   
 
@@ -86,7 +101,9 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country, chartType }) =
           ],
         }}
       />
-    ) : null
+    ) : (<div className="container">
+          <CircularProgress />
+        </div>)
   )
 
   switch (chartType) {

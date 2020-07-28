@@ -9,9 +9,8 @@ import cx from 'classnames';
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
     if (!confirmed) {
       return (
-          <div>
-          <CircularProgress />
-          <p>Loading API Data</p>
+          <div className="container">
+            <CircularProgress />
           </div> 
       )
     }

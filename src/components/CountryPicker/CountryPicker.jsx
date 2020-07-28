@@ -3,9 +3,10 @@
  * App    : corona2020
  * Type   : ReactJS
  * Author : Danny Van Geyte
+ * LM     : 28/07/2020
  */
 import React, {useState, useEffect} from 'react';
-import { NativeSelect, FormControl} from '@material-ui/core';
+import { NativeSelect, FormControl } from '@material-ui/core';
 import { fetchCountries } from '../../api';
 
 import styles from './CountryPicker.module.css'
@@ -26,8 +27,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         // Need to set the array below when we change countries
     }, [setFetchedCountries]);
 
-    return (
-        <>
+    return (        
         <FormControl className={styles.formControl}>
             {/* Calls handleCountryChange event handler */}
             <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
@@ -39,9 +39,8 @@ const CountryPicker = ({ handleCountryChange }) => {
                 {fetchedCountries.map((country, i) => <option key={i} value={country}>{country}</option>)}                
             </NativeSelect>            
         </FormControl>
-        
-        </>
     )
+
 }
 
 export default CountryPicker;

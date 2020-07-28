@@ -3,8 +3,9 @@
  * App    : corona2020
  * Type   : ReactJS
  * Author : Danny Van Geyte
+ * LM     : 28/07/2020
  */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -21,6 +22,7 @@ import styles from './ChartSelector.module.css';
 */
 const ChartSelector = ({ handleChartTypeChange, chartType }) => {
     console.log(handleChartTypeChange, chartType)
+    if (chartType) {
     return (
         <FormControl component="fieldset">
         <div className={styles.tek}>
@@ -45,8 +47,7 @@ const ChartSelector = ({ handleChartTypeChange, chartType }) => {
             </RadioGroup>
             </div>
         </FormControl>
-
-    )
+    )} else {return (<></>)}
 }
 
 export default ChartSelector;

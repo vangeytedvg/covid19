@@ -1,21 +1,18 @@
 import axios from 'axios';
 
 const url = 'https://covid19.mathdro.id/api';
+const countryInfoUrl = 'https://restcountries.eu/rest/v2/name/#?fullText=true'
 
 // Working with async / await is easier to read and write
 // than .then and .catch
 
 // Get the data for the cards component
 export const fetchData = async (country) => {
-
-    console.log('Starter URL ' + url);
-    console.log(country);
-
     let changeableUrl = url;
 
     // If we have a country selected change the url
     if (country) {
-        changeableUrl = `${url}/countries/${country}`;
+        changeableUrl = `${url}/countries/${country}`;        
     }
     
     try {
@@ -49,6 +46,17 @@ export const fetchDailyData = async () => {
           return countries.map((country) => country.name);
 
       } catch (error) {
+          console.log(error)
+      }
+  }
+
+  export const fetchCapitalByCountry = async(country) => {
+    let changeableCapitalURL = countryInfoUrl;
+    changeableCapitalURL = countryInfoUrl.replace('#', country)
+      try {
+        const {data : { name, capital, region, subregion }} = await axios.get(changeableCapitalURL)        
+        return { name, capital, region, subregion }
+      } catch(error) {
           console.log(error)
       }
   }
